@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD db</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <div class="container mx-auto py-4">
+        <form id="form" autocomplete="off" action="/updateData/<%= edit._id%>" method="post">
+            <div class="w-1/2 wrap">
+                <h3 class="title text-[30px] font-extrabold my-5">Edit Expence Tracker</h3>
+                <div class="">
+                    <input type="text" value="<%= edit._id%>" hidden>
+                    <label>Bank Name <span class="text-red-700">*</span></label>
+                    <input type="text" name="bankName" id="entry" placeholder="e.g. mobile,food ... "
+                        value="<%= edit.bankName%>">
+                    <label>Diposite <span class="text-red-700">*</span></label>
+                    <input type="number" name="diposite" id="entry" placeholder="e.g. 20000/-, 500/- ... "
+                        value="<%= edit.diposite%>">
+                    <label>Account no <span class="text-red-700">*</span></label>
+                    <input type="number" name="accountNo" id="entry" placeholder="e.g. 25,26 ... "
+                        value="<%= edit.accountNo%>">
+                    <label>Holder Name <span class="text-red-700">*</span></label>
+                    <input type="text" name="name" id="entry" placeholder="e.g. jay,raj ... " value="<%= edit.name%>">
+                    <label>Mobile No <span class="text-red-700">*</span></label>
+                    <input type="number" name="mobileNo" id="entry" placeholder="e.g.  9876543210 ... "
+                        value="<%= edit.mobileNo%>">
+                    <label>Payment Method <span class="text-red-700">*</span></label>
+                    <input type="text" name="method" id="entry" placeholder="e.g.  card,cash ... "
+                        value="<%= edit.method%>">
+                    <label>Other Details <span class="text-red-700">*</span></label>
+                    <textarea name="other" id="address" class="px-[0.7rem] py-[0.3rem]"
+                    placeholder="issues , check bounce ..." value="<%= edit.other%>"></textarea>
+
+                    <button type="submit"
+                        class="btn submit-btn block w-full rounded-lg py-2 mt-6 text-blck font-extrabold"> <span class="add">ADD</span>
+                        <span class="ml-1 plus"><i class="bi bi-plus-lg"></i></span></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD db</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <section>
+        <div class="container mx-auto py-4">
+            <form id="form" autocomplete="off" action="/addData" method="post">
+                <div class="w-1/2 wrap">
+                    <h3 class="title text-[30px] font-extrabold my-5">Expence Tracker</h3>
+                    <div class="">
+                        <label>Bank Name <span class="text-red-700">*</span></label>
+                        <input type="text" name="bankName" id="entry" placeholder="e.g. HDFC,SBI ... ">
+                        <label>Diposite <span class="text-red-700">*</span></label>
+                        <input type="number" name="diposite" id="entry" placeholder="e.g. 20000/-, 5000000/- ... ">
+                        <label>Account No <span class="text-red-700">*</span></label>
+                        <input type="number" name="accountNo" id="entry" placeholder="e.g. 123xxxxx29... ">
+                        <label>Holder Name <span class="text-red-700">*</span></label>
+                        <input type="text" name="name" id="entry" placeholder="e.g. jay,raj ... ">
+                        <label>Mobile No <span class="text-red-700">*</span></label>
+                        <input type="number" name="mobileNo" id="entry" placeholder="e.g.  9876543210 ... ">
+                        <label>Payment Methods <span class="text-red-700">*</span></label>
+                        <input type="text" name="method" id="entry" placeholder="e.g.  card,cash ... ">
+                        <label>Other Details <span class="text-red-700">*</span></label>
+                        <textarea name="other" id="address" class="px-[0.7rem] py-[0.3rem]"
+                            placeholder="issues , check bounce ..."></textarea>
+
+                        <button type="submit"
+                            class="btn submit-btn block w-full rounded-lg py-2 mt-6 text-blck font-extrabold">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+    <section class="py-[100px]">
+        <h2 class="font-extrabold text-[30px] text-center">View Data</h2>
+        <div class="container mx-auto mt-5">
+            <div class="flex justify-center">
+                <table class="pb-[100px]">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">id</th>
+                            <th scope="col" class="px-6 py-3">Bank Name</th>
+                            <th scope="col" class="px-6 py-3">diposite</th>
+                            <th scope="col" class="px-6 py-3">Account No</th>
+                            <th scope="col" class="px-6 py-3">Holder Name</th>
+                            <th scope="col" class="px-6 py-3">Mobile No</th>
+                            <th scope="col" class="px-6 py-3">Payment Methods</th>
+                            <th scope="col" class="px-6 py-3">Edit</th>
+                            <th scope="col" class="px-6 py-3">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center font-extrabold">
+                        <% data.forEach((rec,index)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= index + 1 %>
+                                </td>
+                                <td>
+                                    <%= rec.bankName %>
+                                </td>
+                                <td>
+                                    <%= rec.diposite %>
+                                </td>
+                                <td>
+                                    <%= rec.accountNo %>
+                                </td>
+                                <td>
+                                    <%= rec.name %>
+                                </td>
+                                <td>
+                                    <%= rec.mobileNo %>
+                                </td>
+                                <td>
+                                    <%= rec.method %>
+                                </td>
+                                <td class="px-6 py-4 uppercase text-center">
+                                    <a href="/editData/<%= rec._id %>"
+                                        class="py-2 px-6 bg-[#222] text-white border-[1px] border-[#222] transition duration-300 ease-in-out hover:bg-transparent hover:text-[#222] rounded-lg">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4 uppercase text-center">
+                                    <a href="/deleteData/<%= rec._id %>"
+                                        class="py-2 px-6 bg-[#222] text-white border-[1px] border-[#222] transition duration-300 ease-in-out hover:bg-transparent hover:text-red-800 hover:border-red-800 rounded-lg">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <% })%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
